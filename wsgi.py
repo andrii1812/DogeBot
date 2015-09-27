@@ -6,14 +6,14 @@ from dogefactory.DogeFactory import DogeFactory
 
 app = Flask(__name__)
 bot = telegram.Bot(token='118292594:AAEN19D9JozNBTM-9ppUt1sY4CIBoop6KLM')
-bot.setWebhook('https://dogebot21.herokuapp.com/')
+#bot.setWebhook('https://dogebot21.herokuapp.com/')
 
 
 @app.route('/', methods=['POST'])
 def message():
 
     data = request.data
-    update = json.loads(data)
+    update = json.loads(str(data, 'utf-8'))
 
     chat_id = update['message']['chat_id']
     text = str(update['message']['text'])
@@ -31,6 +31,8 @@ def message():
         stream.close()
 
         bot.sendPhoto(chat_id, photo=open(filename, 'rb'), caption='doge_123')
+    else:
+        bot.sendMessage(chat_id, 'wow. what?')
     return ''
 
 
