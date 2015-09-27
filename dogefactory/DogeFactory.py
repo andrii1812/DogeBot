@@ -18,7 +18,7 @@ class DogeFactory:
             for string in text.split(separator):
                 yield string.strip()
 
-    def load_image_from_bytes(self, bytes: bytes):
+    def load_image_from_bytes(self, bytes):
         stream = io.BytesIO(bytes)
         image = Image.open(stream).convert('RGBA')
         self.background = image
