@@ -15,8 +15,8 @@ def message():
     data = request.data
     update = json.loads(data)
 
-    chat_id = update.message.chat_id
-    text = str(update.message.text)
+    chat_id = update['message']['chat_id']
+    text = str(update['message']['text'])
     if text.startswith('/doge'):
         doge_text = text.replace('/doge ', '')
 
