@@ -1,4 +1,3 @@
-import io
 import telegram
 from dogefactory.DogeFactory import DogeFactory
 from dogefactory.randomDoge import randomDoge
