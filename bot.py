@@ -9,7 +9,12 @@ print(bot.getMe())
 last_update_id = -1
 
 while True:
-    update = bot.getUpdates()[-1]
+    update = bot.getUpdates()
+    if update:
+        update = update[-1]
+    else:
+        continue
+
     if update.update_id == last_update_id:
         continue
 
@@ -19,9 +24,10 @@ while True:
     if text.startswith('/doge'):
         doge_text = text.replace('/doge ', '')
 
-        background = randomDoge()
+        background, pos = randomDoge()
         doge = DogeFactory(doge_text)\
             .load_image_from_bytes(background)\
+            .set_doge_position(pos)\
             .create_doge()
 
         filename = 'doge_123.png'

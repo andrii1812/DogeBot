@@ -31,7 +31,7 @@ class DogeFactory:
         image_size = self.background.size
         txt = Image.new('RGBA', image_size, (255, 255, 255, 0))
 
-        text_size = int((image_size[0] + image_size[1]) / 50)
+        text_size = int((image_size[0] + image_size[1]) / 40)
         font = ImageFont.truetype("comic.ttf", text_size)
 
         d = ImageDraw.Draw(txt)
@@ -97,16 +97,19 @@ class DogeFactory:
                 return False
         return True
 
+    def set_doge_position(self, pos):
+        assert isinstance(pos, tuple) and len(pos) == 3, 'Invalid position'
+        self.prev_points.append(pos)
+        return self
+
 if __name__ == '__main__':
-    text = "Hello World;Hello World;Hello World;Hello World;Hello World;Hello World;Hello World;" \
-           "Hello World;Hello World"
+    text = "Hello World;Hello World;Hello World;Hello World;"
 
-    background = randomDoge()
-
-    stream
+    background, pos = randomDoge()
 
     doge = DogeFactory(text, ';')\
         .load_image_from_bytes(background)\
+        .set_doge_position(pos)\
         .create_doge()
 
     doge.show()

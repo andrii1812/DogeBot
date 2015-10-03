@@ -6,7 +6,7 @@ from dogefactory.DogeFactory import DogeFactory
 
 app = Flask(__name__)
 bot = telegram.Bot(token='118292594:AAEN19D9JozNBTM-9ppUt1sY4CIBoop6KLM')
-bot.setWebhook('https://dogebot21.herokuapp.com/')
+bot.setWebhook('')
 
 
 @app.route('/', methods=['POST'])
